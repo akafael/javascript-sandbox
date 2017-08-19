@@ -9,11 +9,11 @@
  * @version 0.1
  */
 function wordCounter(text){
-  var wordCount = 0;
-  //var words = text.replace(/\s+/, " ").split(" ");
-  var words = text.split(" ");
-	
-	for (i=0; i< words.length; i++){if(words[i] != ''){wordCount++;}}
+  // Remove espaços em branco usando regex e quebra palavras em uma array
+  var words = text.replace(/\s+/, " ").split(" ");
+
+  // Pega Quantidade de Palavras
+  var wordCount = words.length;
 
   return wordCount;
 }
@@ -46,4 +46,35 @@ function wordCounter(text){
    timeMinutes = readingSpeed*wordCounter(text);
    
    return timeMinutes;
+ }
+
+
+/**
+ * Tempo de leitura
+ * @version 0.2
+ */
+ function readingTimeSec(text, mode){
+   // Speed words/min
+   var readingMode = {slow: 1.0, avg:2.5, fast:3};
+   var timeSeconds = 0;
+   var readingSpeed = readingMode.avg;
+   
+   switch(mode){
+      case "slow":
+        readingSpeed = readingMode.slow;
+      break;
+      
+      case "fast":
+        readingSpeed = readingMode.fast;
+      break;
+      
+      case "avg":
+      default:
+        readingSpeed = readingMode.avg;
+      break;
+   }
+   
+   timeSeconds = readingSpeed*wordCounter(text);
+   
+   return timeSeconds;
  }
