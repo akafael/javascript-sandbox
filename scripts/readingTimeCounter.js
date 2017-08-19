@@ -11,9 +11,10 @@
 function wordCounter(text){
   // Remove espaços em branco usando regex e quebra palavras em uma array
   var words = text.replace(/\s+/, " ").split(" ");
+  var wordCount = 0;
 
   // Pega Quantidade de Palavras
-  var wordCount = words.length;
+  for (i=0; i< words.length; i++){if(words[i] != ''){wordCount++;}}
 
   return wordCount;
 }
